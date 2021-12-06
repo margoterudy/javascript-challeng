@@ -31,6 +31,28 @@ addData(dataTable);
 //Create event listeners (from 3rd lesson of JS)
 //We can use the `on` function in d3 to attach an event to the handler function
 button.on("click",() => {
-    
-}
+
+        d3.event.preventDefault();
+
+        var inputDate = inputFieldDate.property("value").trim();
+        // console.log(inputDate)
+
+
+        $tbody.html("");
+          let response = {
+              filterDate, filterCity
+
+          if(response.filterCity.length !== 0) {
+            addData(filterCombinedData);
+        }
+        else if(response.filterCity.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0))) {
+          addData(filterDate) || addData(filterCity);
+      }
+
+
+      // add comment if not sightings
+      else {
+        $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
+    }
+})
 
