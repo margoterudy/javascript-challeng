@@ -1,8 +1,8 @@
 // from data.js
-var tableData = data;
+var dataTable = data;
 
 // Viewing the available data frp, JS
-console.log(tableData);
+console.log(dataTable);
 
 // Create References
 var tbody = d3.select("tbody");
@@ -25,3 +25,11 @@ var addData = (dataInput) => {
         )
     });
 }
+
+//add Data table
+addData(dataTable);
+
+
+
+
+
