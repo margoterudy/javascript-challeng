@@ -28,5 +28,9 @@ var addData = (dataInput) => {
 //add Data table
 addData(dataTable);
 
-
+//Create event listeners (from 3rd lesson of JS)
+//We can use the `on` function in d3 to attach an event to the handler function
+button.on("click",() => {
+    
+}
 
