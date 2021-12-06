@@ -10,7 +10,7 @@ var tbody = d3.select("tbody");
 // TEST 
 // tbody.append("tr").append("td").text("Hello!");
 
-//FORMAT AND BUTTON
+//FORMAT AND FILTER BUTTON
 var $tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
 var inputFieldDate = d3.select("#datetime");
@@ -29,6 +29,35 @@ var addData = (dataInput) => {
 //add Data table
 addData(dataTable);
 
+//Event listener for button
+button.on("click", () => {
+
+    d3.event.preventDefault();
+
+    var inputDate = inputFieldDate.property("value").trim();
+    
+    // test
+    // console.log(inputDate)
+
+    //Filter data and clean 
+    var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
+    $tbody.html("");
+
+
+    let response = {
+        filterDate
+    }
+
+
+    if(response.filterDate.length !== 0) {
+        addData(filterDate);
+    }
+
+    // add comment if not sightings
+        else {
+            $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
+        }
+})
 
 
 
