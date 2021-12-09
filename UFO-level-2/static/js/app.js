@@ -1,4 +1,4 @@
-// from data.js USED CODE FROM LEVEL ON UP UNTIL DATATABLE ADDED
+// from data.js USED CODE FROM LEVEL ONE 
 var dataTable = data;
 
 // Viewing the available data frp, JS
@@ -17,6 +17,8 @@ var inputFieldDate = d3.select("#datetime");
 var inputFieldCity = d3.select("#city");
 var columns = ["datetime", "city", "state", "country", "shape", "comments"]
 
+
+
 //Insert Data into HTML
 var addData = (dataInput) => {
     dataInput.forEach(ufoSightings => {
@@ -25,6 +27,7 @@ var addData = (dataInput) => {
         )
     });
 }
+
 //add Data table
 addData(dataTable);
 
@@ -37,22 +40,38 @@ button.on("click",() => {
         var inputDate = inputFieldDate.property("value").trim();
         // console.log(inputDate)
 
+        var inputCity = inputFieldCity.property("value").toLowerCase().trim();
+        // console.log(inputCity)
 
-        $tbody.html("");
-          let response = {
-              filterDate, filterCity
+        var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
+        // console.log(filterDate)
 
-          if(response.filterCity.length !== 0) {
-            addData(filterCombinedData);
-        }
-        else if(response.filterCity.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0))) {
-          addData(filterDate) || addData(filterCity);
-      }
+        var filterCity = dataTable.filter(dataTable => dataTable.city === inputCity);
+        // console.log(filterCity)
+
+        var filterCombinedData = dataTable.filter(dataTable => dataTable.datetime === inputDate && dataTable.city === inputCity);
+        // console.log(filterCombinedData)
+
+  //Filter data and clean 
+  var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
+  $tbody.html("");
 
 
-      // add comment if not sightings
+  let response = {
+    filterDate, filterCity, filterCombinedData
+}
+if(response.filterCombinedData.length !== 0) {
+  addData(filterCombinedData);
+}
+else if(response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0))) {
+addData(filterDate) || addData(filterCity);
+}
+
+  // add comment if not sightings
       else {
-        $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
-    }
+          $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
+      }
 })
+
+
 
