@@ -65,6 +65,14 @@ button.on("click", () => {
   // // console.log(filterCountry) // // console.log(filterState) does NOT work
 
 
+    // ////duration
+  // var inputdurationMinutes = inputFieldDuration.property("value").(dataTable => dataTable.durationMinutes === inputdurationMinutes);
+  // // console.log(inputDuration)
+
+  // var filterdurationMinutes =S dataTable.filter(dataTable => dataTable.durationMinutes === inputdurationMinutes);
+  // // console.log(filterDuration) // // console.log(filterDuration) does NOT work
+
+
 
 ////////////////////////////////////////////////////////////////////////////////////// below works 
   var filterCombinedData = dataTable.filter(dataTable => dataTable.datetime === inputDate && dataTable.city === inputCity);
