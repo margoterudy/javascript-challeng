@@ -15,6 +15,7 @@ var $tbody = d3.select("tbody");
 var button = d3.select("#filter-btn");
 var inputFieldDate = d3.select("#datetime");
 var inputFieldCity = d3.select("#city");
+var inputFieldComments = d3.select("#comments");
 var columns = ["datetime", "city", "state", "country", "shape", "comments"]
 
 //Insert Data into HTML
