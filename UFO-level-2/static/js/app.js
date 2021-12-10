@@ -12,7 +12,6 @@ var inputFieldCity = d3.select("#city");
 var inputFieldState = d3.select("#state");
 var inputFieldCountry = d3.select("#country");
 var inputFieldShape = d3.select("#shape");
-var inputFieldDuration = d3.select("#duration");
 var inputFieldComments = d3.select("#comments");
 
 
@@ -39,6 +38,10 @@ button.on("click", () => {
 
   d3.event.preventDefault();
 
+
+  ////////FILTER BUTTONS/////
+
+
 ////date
   var inputDate = inputFieldDate.property("value").trim();
     // test
@@ -47,7 +50,8 @@ button.on("click", () => {
   var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
     // console.log(filterDate)
 
-    //////city
+
+ //////city
   var inputCity = inputFieldCity.property("value").toLowerCase().trim();
   // console.log(inputCity)
 
@@ -57,10 +61,10 @@ button.on("click", () => {
 
 // state
   var inputState = inputFieldState.property("value").toLowerCase().trim();
-  console.log(inputState)
+  // console.log(inputState)
 
   var filterState = dataTable.filter(dataTable => dataTable.state === inputState);
-console.log(filterState) 
+// console.log(filterState) 
 
 
   ////country
@@ -71,7 +75,7 @@ console.log(filterState)
   // console.log(filterCountry) // 
 
 
-      // ////shape
+// ////shape
   var inputShape = inputFieldShape.property("value").toLowerCase().trim();
   // console.log(inputShape)
 
@@ -79,45 +83,43 @@ console.log(filterState)
   //console.log(filterShape) //  
 
    //////////////////////////////////////so far the above work do not touch
-
-    // ////duration
-  // var inputdurationMinutes = inputFieldDuration.property("value").(dataTable => dataTable.durationMinutes === inputdurationMinutes);
-  // // console.log(inputDuration)
-
-  // var filterdurationMinutes =dataTable.filter(dataTable => dataTable.durationMinutes === inputdurationMinutes);
-  // // console.log(filterDuration) // does NOT work
-
-
     // ////comments
-  // var inputComments = inputFieldComment.property("value").(dataTable => dataTable.comments === comments);
+  var inputComments = inputFieldComments.property("value").toLowerCase().trim();
   // // console.log(inputDuration)
 
-  // var filtercomments =dataTable.filter(dataTable => dataTable.comments === inputcomments);
-  // // console.log(filterComments) // // console.log(filterComments) does NOT work
+  var filterComments =dataTable.filter(dataTable => dataTable.comments === inputComments);
+  // // console.log(filterComments) // 
 
 
 
-////////////////////////////////////////////////////////////////////////////////////// below works 
+////////////////////////////////////////////////////////////////////////////////////// below works add here
   var filterCombinedData = dataTable.filter(dataTable => 
+
     dataTable.datetime === inputDate &&
     dataTable.city === inputCity &&
     dataTable.state === inputState &&
     dataTable.country === inputCountry &&
-    dataTable.shape === inputeShape
-    ); //within the ()
+    dataTable.shape === inputShape &&
+    dataTable.comments === inputComments
+    );
+
+
   // console.log(filterCombinedData) works add other tables here
  
 
-  //Filter data and clean  - add here too
+  //Filter data and clean all categories for search - add here too
   $tbody.html("");
   let response = {
-      filterDate, filterCity,  filterCombinedData, filterState, filterCountry, filterShape
+      filterDate, filterCity,  filterCombinedData, filterState, filterCountry, filterShape, filterComments
   }
+
   if(response.filterCombinedData.length !== 0) {
     addData(filterCombinedData);
 }
-else if(response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0 || response.filterState.length !== 0 || response.filterCountry.length !== 0 || response.filterShape.length !== 0))) {
-  addData(filterDate) || addData(filterCity) || addData (filterState) || addData (filterCountry) || addData (filterShape) ;
+
+//respond to call add here 2x
+else if(response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0 || response.filterState.length !== 0 || response.filterCountry.length !== 0 || response.filterShape.length !== 0 || response.filterComments.length !== 0))) {
+  addData(filterDate) || addData(filterCity) || addData (filterState) || addData (filterCountry) || addData (filterShape) || addData (filterComments) ;
 }
 
     // add comment if not sightings
