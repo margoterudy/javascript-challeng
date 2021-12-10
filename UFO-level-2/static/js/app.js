@@ -33,45 +33,48 @@ addData(dataTable);
 
 //Create event listeners (from 3rd lesson of JS)
 //We can use the `on` function in d3 to attach an event to the handler function
-button.on("click",() => {
+// button.on("click",() => {
 
-        d3.event.preventDefault();
+//         d3.event.preventDefault();
 
-        var inputDate = inputFieldDate.property("value").trim();
-        // console.log(inputDate)
+//         var inputDate = inputFieldDate.property("value").trim();
+//         // console.log(inputDate)
 
-        var inputCity = inputFieldCity.property("value").toLowerCase().trim();
-        // console.log(inputCity)
+            // test
+    // console.log(inputDate)
 
-        var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
-        // console.log(filterDate)
+        // var inputCity = inputFieldCity.property("value").toLowerCase().trim();
+        // // console.log(inputCity)
 
-        var filterCity = dataTable.filter(dataTable => dataTable.city === inputCity);
-        // console.log(filterCity)
+        // var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
+        // // console.log(filterDate)
 
-        var filterCombinedData = dataTable.filter(dataTable => dataTable.datetime === inputDate && dataTable.city === inputCity);
-        // console.log(filterCombinedData)
+        // var filterCity = dataTable.filter(dataTable => dataTable.city === inputCity);
+        // // console.log(filterCity)
 
-  //Filter data and clean 
-  var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
-  $tbody.html("");
+        // var filterCombinedData = dataTable.filter(dataTable => dataTable.datetime === inputDate && dataTable.city === inputCity);
+        // // console.log(filterCombinedData)
+
+  // //Filter data and clean 
+  // var filterDate = dataTable.filter(dataTable => dataTable.datetime === inputDate);
+  // $tbody.html("");
 
 
-  let response = {
-    filterDate, filterCity, filterCombinedData
-}
-if(response.filterCombinedData.length !== 0) {
-  addData(filterCombinedData);
-}
-else if(response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0))) {
-addData(filterDate) || addData(filterCity);
-}
+//   let response = {
+//     filterDate, filterCity, filterCombinedData
+// }
+// if(response.filterCombinedData.length !== 0) {
+//   addData(filterCombinedData);
+// }
+// else if(response.filterCombinedData.length === 0 && ((response.filterDate.length !== 0 || response.filterCity.length !== 0))) {
+// addData(filterDate) || addData(filterCity);
+// }
 
   // add comment if not sightings
-      else {
-          $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
-      }
-})
+//       else {
+//           $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
+//       }
+// })
 
 
 
