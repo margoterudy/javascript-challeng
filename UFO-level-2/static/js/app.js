@@ -90,9 +90,7 @@ button.on("click", () => {
   var filterComments =dataTable.filter(dataTable => dataTable.comments === inputComments);
   // // console.log(filterComments) // 
 
-
-
-////////////////////////////////////////////////////////////////////////////////////// below works add here
+////////////////////////////////////////////////////////////////////////////////////// 
   var filterCombinedData = dataTable.filter(dataTable => 
 
     dataTable.datetime === inputDate &&

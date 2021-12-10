@@ -54,7 +54,7 @@ button.on("click", () => {
         addData(filterDate);
     }
 
-    // add comment if not sightings
+    // Comment if there are no sightings
         else {
             $tbody.append("tr").append("td").text("There is NOTHING here! I SAY, GOOD DAY SIR");
         }
