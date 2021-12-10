@@ -82,7 +82,7 @@ button.on("click", () => {
   var filterShape =dataTable.filter(dataTable => dataTable.shape === inputShape);
   //console.log(filterShape) //  
 
-   //////////////////////////////////////so far the above work do not touch
+   //////////////////////////////////////I cannot find the error in the console to call the comments. it gives error message at search
     // ////comments
   var inputComments = inputFieldComments.property("value").toLowerCase().trim();
   // // console.log(inputDuration)
